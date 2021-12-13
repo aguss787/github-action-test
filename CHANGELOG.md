@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 0.6.0 (2021-12-13)
+
+### Feat
+
+- anjing (#1)
+
 ## 0.5.0 (2021-12-13)
 
 ### Feat
