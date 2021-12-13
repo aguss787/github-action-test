@@ -26,7 +26,7 @@ jobs:
           push: false
       - name: Debug git log
         run: |
-          git log --oneline -n 5 > log
+          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > log
           cat log
       - name: Print Changelog
         run: cat body.md
