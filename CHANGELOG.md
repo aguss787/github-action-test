@@ -1,3 +1,19 @@
+## 0.3.0 (2021-12-13)
+
+### Feat
+
+- push bump commit
+- move commit backward
+- commit but don't push
+
+### Fix
+
+- change log param
+- debug log before after tagging
+- checkout main
+- add tag debug
+- do not commit bump yet
+
 ## 0.2.0 (2021-12-13)
 
 ### Feat
