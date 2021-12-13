@@ -23,7 +23,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           changelog_increment_filename: body.md
-          commit: false
+          push: false
+      - name: Debug git log
+        run: |
+          git log --oneline -n 5 > log
+          cat log
       - name: Print Changelog
         run: cat body.md
       - name: Print Version
