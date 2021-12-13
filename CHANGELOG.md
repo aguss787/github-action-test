@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 0.7.1 (2021-12-13)
+
+### Fix
+
+- kucing
+
 ## 0.7.0 (2021-12-13)
 
 ### Fix
