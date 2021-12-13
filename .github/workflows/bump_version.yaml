@@ -27,6 +27,8 @@ jobs:
       - name: move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
+      - name: checkout main
+        run: git checkout main
       - name: Debug git log
         run: |
           git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > log
