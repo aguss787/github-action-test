@@ -26,14 +26,14 @@ jobs:
           push: false
       - name: Debug git log 1
         run: |
-          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > log
+          git log --tags --pretty="%h %d %s" --decorate=full main > log
           cat log
       - name: move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
-      - name: Debug git log 2
+      - name: Debug git log 2gi
         run: |
-          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > log
+          git log --tags --pretty="%h %d %s" --decorate=full main > log
           cat log
       - name: Print Changelog
         run: cat body.md
