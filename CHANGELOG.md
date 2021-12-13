@@ -4,6 +4,13 @@
 
 - update readme again
 
+## 0.4.3 (2021-12-13)
+
+### Fix
+
+- version mabok
+- update readme again
+
 ## 0.4.2 (2021-12-13)
 
 ### Fix
