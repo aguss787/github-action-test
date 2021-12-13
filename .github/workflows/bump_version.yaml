@@ -24,12 +24,14 @@ jobs:
           branch: main
           changelog_increment_filename: body.md
           push: false
+      - name: Debug git log 1
+        run: |
+          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > log
+          cat log
       - name: move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
-      - name: checkout main
-        run: git checkout main
-      - name: Debug git log
+      - name: Debug git log 2
         run: |
           git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > log
           cat log
