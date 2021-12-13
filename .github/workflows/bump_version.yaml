@@ -16,6 +16,8 @@ jobs:
         with:
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # Commitizen stuff
       - id: cz
         name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
@@ -24,17 +26,32 @@ jobs:
           branch: main
           changelog_increment_filename: body.md
           push: false
-      - name: Debug git log 1
-        run: |
-          git log --tags --pretty="%h %d %s" --decorate=full main > log
-          cat log
       - name: move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
-      - name: Debug git log 2gi
+          
+      - name: Debug git log
         run: |
           git log --tags --pretty="%h %d %s" --decorate=full main > log
           cat log
+
+      # Push Commit
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          tags: true
+
+      # Release
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     body_path: "body.md"
+      #     tag_name: ${{ steps.cz.outputs.version }}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Print Changelog
         run: cat body.md
       - name: Print Version
