@@ -4,6 +4,30 @@
 
 - update readme again
 
+## 0.7.0 (2021-12-13)
+
+### Fix
+
+- test again argg
+- test again
+- test again
+- use diff token
+- test gobloh
+- asd
+- debug pa token
+- thingy
+- thingy
+- thingy
+- push command actorr
+- push command again (#5)
+- push command (#4)
+
+### Feat
+
+- use agus pa token (#6)
+- atomic push (#3)
+- jerapah (#2)
+
 ## 0.6.0 (2021-12-13)
 
 ### Feat
