@@ -37,10 +37,10 @@ jobs:
         run: |
           echo $GITHUB_REPOSITORY
           echo $GITHUB_ACTOR
-          export remote_repo="https://aguss787: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@github.com/aguss787/github-action-test.git"
+          export remote_repo="https://aguss787:${TOKEN}@github.com/aguss787/github-action-test.git"
           git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.AGUS_PA_TOKEN }}
+          TOKEN: ${{ secrets.AGUS_PA }}
 
       # Release
       - name: Release
