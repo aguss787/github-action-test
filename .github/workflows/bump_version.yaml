@@ -35,7 +35,7 @@ jobs:
       # But we need the atomic operation for pushing the commit and tag
       - name: Push changes
         run: |
-          echo $GITHUB_TOKEN
+          echo $GITHUB_REPOSITORY
           export remote_repo="https://aguss787:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
         env:
