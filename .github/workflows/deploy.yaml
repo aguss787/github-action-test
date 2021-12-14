@@ -16,18 +16,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    environment: 
-      name: ${{ github.event.inputs.env }}
     steps:
-      - name: Check out
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.commit_id }}
-          fetch-depth: 0
-          token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Deploy
-        run: |
-          echo deploying
-          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > logs
-          cat logs
-          head CHANGELOG.md -n 100
+        uses: ${GITHUB_REPOSITORY}/.github/workflows/deploy_template.yaml@${GITHUB_REF}
+        with:
+          commit_id: ${{ github.event.inputs.commit_id }}
+          env: ${{ github.event.inputs.env }}

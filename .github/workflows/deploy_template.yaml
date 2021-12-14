@@ -1,0 +1,35 @@
+name: Reusable Deploy Workflow
+
+on:
+  workflow_call:
+    inputs:
+      commit_id:
+        description: 'Commit id/tag/branch to be deployed'
+        required: true
+        default: 'main'
+        type: string
+      env:
+        description: 'env'
+        required: true
+        default: 'production' # todo: dropdown
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    environment: 
+      name: ${{ inputs.env }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ inputs.commit_id }}
+          fetch-depth: 0
+          token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Deploy
+        run: |
+          echo deploying
+          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > logs
+          cat logs
+          head CHANGELOG.md -n 100
