@@ -40,6 +40,8 @@ jobs:
       - name: Push changes
         if: ${{ !env.ACT }} # Don't push on local
         run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/id_rsa
           echo $SSH_KEY > ~/.ssh/id_rsa
           export remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
           git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
