@@ -1,4 +1,4 @@
-name: deploy
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
           ref: ${{ github.event.inputs.commit_id }}
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: deploy
+      - name: Deploy
         run: |
           echo deploying
           git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > logs
