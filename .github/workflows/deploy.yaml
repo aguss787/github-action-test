@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: "Deploy latest"
+    name: Deploy
     steps:
       - name: Check out
         uses: actions/checkout@v2
@@ -22,4 +22,6 @@ jobs:
       - name: deploy
         run: |
           echo deploying
-          git status
+          git log --tags -n 10 > logs
+          cat logs
+          head CHANGELOG.md -n 100
