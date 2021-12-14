@@ -37,11 +37,14 @@ jobs:
       # Push commit & tag
       # Other option is to use https://github.com/ad-m/github-push-action
       # But we need the atomic operation for pushing the commit and tag
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.REPO_DEPLOY_KEY }} 
+
       - name: Push changes
         if: ${{ !env.ACT }} # Don't push on local
         run: |
-          ssh-agent -s 
-          echo "${SSH_PRIVATE_KEY}" | ssh-add -
           export remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
           git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
         env:
