@@ -4,6 +4,24 @@
 
 - update readme again
 
+## 0.12.0 (2021-12-14)
+
+### Fix
+
+- ssh thingy
+- ssh thingy
+- start ssh agent
+- id_rsa perm
+- id_rsa perm
+- kucing
+- kucing
+- kucing
+
+### Feat
+
+- use deploy key
+- dropdown env deploy
+
 ## 0.11.0 (2021-12-14)
 
 ### Fix
