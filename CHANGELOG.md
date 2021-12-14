@@ -4,6 +4,16 @@
 
 - update readme again
 
+## 0.11.0 (2021-12-14)
+
+### Fix
+
+- mabok
+
+### Feat
+
+- deploy to prod
+
 ## 0.10.0 (2021-12-14)
 
 ### Fix
