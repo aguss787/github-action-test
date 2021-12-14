@@ -43,6 +43,7 @@ jobs:
           mkdir -p ~/.ssh
           touch ~/.ssh/id_rsa
           echo $SSH_KEY > ~/.ssh/id_rsa
+          sudo chmod 700 ~/.ssh/id_rsa
           export remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
           git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
         env:
