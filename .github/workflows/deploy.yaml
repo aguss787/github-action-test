@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_id:
+        description: 'Commit id to be deployed'
+        required: false
+        default: 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: "Deploy latest"
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          tag: ${{ github.event.inputs.commit_id }}
+          fetch-depth: 0
+          token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: deploy
+        run: |
+          echo deploying
+          git status
