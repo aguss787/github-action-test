@@ -1,17 +1,17 @@
-name: Bump version
+name: Release
 
 on:
   workflow_dispatch:
 
 jobs:
   bump_version:
-    environment: 
+    environment:
       name: local
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
     outputs:
-      version: ${{ steps.version_output.outputs.version }}
+      version: ${{ steps.cz.outputs.version }}
     steps:
       - name: Check out
         uses: actions/checkout@v2
@@ -38,6 +38,7 @@ jobs:
       # Other option is to use https://github.com/ad-m/github-push-action
       # But we need the atomic operation for pushing the commit and tag
       - name: Push changes
+        if: ${{ !env.ACT }} # Don't push on local
         run: |
           export remote_repo="https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
@@ -51,25 +52,22 @@ jobs:
           body_path: "body.md"
           tag_name: ${{ steps.cz.outputs.version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+          GITHUB_TOKEN: ${{ secrets.AGUS_PA }}
+
       - name: Print Changelog
         run: cat body.md
       - name: Print Version
-        id: version_output
-        run: |
-          echo "Bumped to version ${{ steps.cz.outputs.version }}"
-          echo "::set-output version=${{ steps.cz.outputs.version }}"
+        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
 
-  deploy_to_staging:
+  deploy_to_dev:
     needs: bump_version
     uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
     with:
       commit_id: ${{ needs.bump_version.outputs.version }}
-      env: staging
+      env: dev
 
   deploy_to_production:
-    needs: deploy_to_staging
+    needs: deploy_to_de
     uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
     with:
       commit_id: ${{ needs.bump_version.outputs.version }}

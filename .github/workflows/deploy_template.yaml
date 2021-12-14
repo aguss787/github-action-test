@@ -4,21 +4,20 @@ on:
   workflow_call:
     inputs:
       commit_id:
-        description: 'Commit id/tag/branch to be deployed'
         required: true
         default: 'main'
         type: string
       env:
         description: 'env'
         required: true
-        default: 'production' # todo: dropdown
+        default: 'production'
         type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    environment: 
+    environment:
       name: ${{ inputs.env }}
     steps:
       - name: Check out
@@ -29,7 +28,7 @@ jobs:
           token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Deploy
         run: |
-          echo deploying
+          echo "currently, it is doing nothing right now"
           git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > logs
           cat logs
           head CHANGELOG.md -n 100

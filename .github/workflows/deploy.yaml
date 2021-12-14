@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       commit_id:
-        description: 'Commit id to be deployed'
+        description: 'Tag/branch/commit id to be deployed'
         required: true
         default: 'main'
       env:
@@ -14,12 +14,11 @@ on:
         type: choice
         options:
           - dev
-          - staging
           - production
 
 jobs:
   deploy:
-      uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
-      with:
-        commit_id: ${{ github.event.inputs.commit_id }}
-        env: ${{ github.event.inputs.env }}
+    uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
+    with:
+      commit_id: ${{ github.event.inputs.commit_id }}
+      env: ${{ github.event.inputs.env }}
