@@ -24,6 +24,7 @@ jobs:
           branch: main
           changelog_increment_filename: body.md
           push: false
+          extra_requirements: typing-extensions
       - name: move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
