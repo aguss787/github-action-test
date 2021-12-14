@@ -22,6 +22,6 @@ jobs:
       - name: deploy
         run: |
           echo deploying
-          git log --tags -n 10 > logs
+          git log --no-walk --tags --pretty="%h %d %s" --decorate=full -n 10 > logs
           cat logs
           head CHANGELOG.md -n 100
