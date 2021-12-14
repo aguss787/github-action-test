@@ -4,6 +4,14 @@
 
 - update readme again
 
+## 0.8.1 (2021-12-14)
+
+### Fix
+
+- better log output
+- wrong checkout param
+- deployment script
+
 ## 0.8.0 (2021-12-14)
 
 ### Feat
