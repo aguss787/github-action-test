@@ -41,6 +41,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.REPO_DEPLOY_KEY }} 
+          known_hosts: github.com
 
       - name: Push changes
         if: ${{ !env.ACT }} # Don't push on local
