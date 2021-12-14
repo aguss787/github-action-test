@@ -4,6 +4,14 @@
 
 - update readme again
 
+## 0.8.2 (2021-12-14)
+
+### Fix
+
+- add missing module
+- revert
+- bump
+
 ## 0.8.1 (2021-12-14)
 
 ### Fix
