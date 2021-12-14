@@ -7,11 +7,17 @@ on:
         description: 'Commit id to be deployed'
         required: false
         default: 'main'
+      env:
+        description: 'env'
+        required: true
+        default: 'production' # todo: dropdown
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
+    environment: 
+      name: ${{ github.event.inputs.env }}
     steps:
       - name: Check out
         uses: actions/checkout@v2
