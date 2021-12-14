@@ -1,7 +1,7 @@
 name: Deploy
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       commit_id:
         description: 'Commit id to be deployed'
