@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 0.9.0 (2021-12-14)
+
+### Feat
+
+- use env for bump
+
 ## 0.8.2 (2021-12-14)
 
 ### Fix
