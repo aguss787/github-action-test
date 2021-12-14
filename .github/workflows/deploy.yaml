@@ -5,12 +5,17 @@ on:
     inputs:
       commit_id:
         description: 'Commit id to be deployed'
-        required: false
+        required: true
         default: 'main'
       env:
         description: 'env'
         required: true
-        default: 'production' # todo: dropdown
+        default: 'production'
+        type: choice
+        options:
+          - dev
+          - staging
+          - production
 
 jobs:
   deploy:
