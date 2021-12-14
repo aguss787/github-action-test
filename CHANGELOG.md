@@ -4,6 +4,13 @@
 
 - update readme again
 
+## 0.8.0 (2021-12-14)
+
+### Feat
+
+- more readme
+- bump & deploy on demand
+
 ## 0.7.1 (2021-12-13)
 
 ### Fix
