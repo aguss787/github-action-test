@@ -6,7 +6,7 @@ on:
 jobs:
   bump_version:
     environment: 
-    name: Staging
+      name: Staging
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
