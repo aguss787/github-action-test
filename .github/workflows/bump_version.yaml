@@ -10,6 +10,8 @@ jobs:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
+    outputs:
+      version: ${{ steps.version_output.outputs.version }}
     steps:
       - name: Check out
         uses: actions/checkout@v2
@@ -54,4 +56,14 @@ jobs:
       - name: Print Changelog
         run: cat body.md
       - name: Print Version
-        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
+        id: version_output
+        run: |
+          echo "Bumped to version ${{ steps.cz.outputs.version }}"
+          echo "::set-output version=${{ steps.cz.outputs.version }}"
+
+  deploy_to_staging:
+    needs: bump_version
+    uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
+      with:
+        commit_id: ${{ needs.bump_version.outputs.version }}
+        env: staging
