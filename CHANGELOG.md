@@ -4,6 +4,22 @@
 
 - update readme again
 
+## 0.10.0 (2021-12-14)
+
+### Fix
+
+- syntax
+- bump deploy step missing platform
+- template usage
+- kucing
+- static script path
+
+### Feat
+
+- bump and deploy
+- reusable deployment
+- env param
+
 ## 0.9.0 (2021-12-14)
 
 ### Feat
