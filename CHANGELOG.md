@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 0.14.0 (2021-12-15)
+
+### Feat
+
+- release w/o token
+
 ## 0.13.0 (2021-12-15)
 
 ### Feat
