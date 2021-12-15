@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 0.13.0 (2021-12-15)
+
+### Feat
+
+- no token declaration for checkout
+
 ## 0.12.0 (2021-12-14)
 
 ### Fix
