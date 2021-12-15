@@ -58,8 +58,6 @@ jobs:
         with:
           body_path: "body.md"
           tag_name: ${{ steps.cz.outputs.version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Print Changelog
         run: cat body.md
