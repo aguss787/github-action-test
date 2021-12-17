@@ -4,6 +4,13 @@
 
 - update readme again
 
+## 0.15.1 (2021-12-17)
+
+### Fix
+
+- anjing
+- kucing
+
 ## 0.15.0 (2021-12-15)
 
 ### Feat
