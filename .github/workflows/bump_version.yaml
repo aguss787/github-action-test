@@ -45,7 +45,7 @@ jobs:
           echo kucing > dist/kucing.txt
 
       - name: Save the artifact
-        uses: actions/artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: build-artifact
           path: dist
