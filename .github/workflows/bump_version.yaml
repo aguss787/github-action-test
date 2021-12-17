@@ -35,6 +35,21 @@ jobs:
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
 
+      # Store artifact
+      - name: Create the artifact
+        run: |
+          mkdir dist
+          touch dist/version.txt
+          touch dist/kucing.txt
+          echo ${{ steps.cz.outputs.version }} > dist/version.txt
+          echo kucing > dist/kucing.txt
+
+      - name: Save the artifact
+        uses: actions/artifact@v2
+        with:
+          name: build-artifact
+          path: dist
+
       # Push commit & tag
       # Other option is to use https://github.com/ad-m/github-push-action
       # But we need the atomic operation for pushing the commit and tag
