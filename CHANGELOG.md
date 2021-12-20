@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.0.0 (2021-12-20)
+
+### Feat
+
+- test breaking changes
+
 ## 0.16.0 (2021-12-20)
 
 ### Fix
