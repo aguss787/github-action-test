@@ -19,6 +19,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+        
+      - name: test script
+        run: ./test.sh
 
       # Commitizen stuff
       # Note that we need personal account token of an administrator with `repo` authorization to push directly to main branch
