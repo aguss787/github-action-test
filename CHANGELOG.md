@@ -4,6 +4,17 @@
 
 - update readme again
 
+## 0.16.0 (2021-12-20)
+
+### Fix
+
+- check if github runner
+- kucing
+
+### Feat
+
+- test tar
+
 ## 0.15.2 (2021-12-17)
 
 ### Fix
