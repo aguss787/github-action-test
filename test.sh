@@ -3,4 +3,11 @@
 tar -xvf test.tar.gz
 ls -R
 
-tar -xvf test.tar.gz -O '*/setup.py'
+if [ -n "$CI" ]
+then
+    extra_flags="--wildcards"
+else
+    extra_flags=""
+fi
+
+tar -xvf test.tar.gz $extra_flags -O '*/setup.py'
