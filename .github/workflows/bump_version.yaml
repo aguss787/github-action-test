@@ -40,8 +40,8 @@ jobs:
 
       - name: Commit setup.py
         run: |
-          echo 1 >> README.md
-          git add README.md
+          pwd
+          git add setup.py
           git commit --amend --no-edit
 
       # Store artifact
