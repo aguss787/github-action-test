@@ -38,6 +38,12 @@ jobs:
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
 
+      - name: Commit setup.py
+        run: |
+          echo 1 >> README.md
+          git add README.md
+          git commit --amend --no-edit
+
       # Store artifact
       - name: Create the artifact
         run: |
