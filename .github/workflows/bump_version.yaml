@@ -36,7 +36,7 @@ jobs:
           extra_requirements: typing-extensions
       - name: Returns repo files ownership to the runner
         run: |
-          sudo chmod -R ugo+rwX .
+          sudo chown -R $(whoami) .
       - name: move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
