@@ -4,6 +4,20 @@
 
 - update readme again
 
+## 1.1.0 (2022-01-05)
+
+### Fix
+
+- return files ownership to the runner after cz
+- mod setup.py each run
+- add setup.py
+
+### Feat
+
+- dog
+- asd
+- kucing
+
 ## 1.0.0 (2021-12-20)
 
 ### Feat
