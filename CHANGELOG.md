@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.1.1 (2022-01-05)
+
+### Fix
+
+- actually return the ownership
+
 ## 1.1.0 (2022-01-05)
 
 ### Fix
