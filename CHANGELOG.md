@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.1.2 (2022-01-12)
+
+### Fix
+
+- undo unintended changes
+
 ## 1.1.1 (2022-01-05)
 
 ### Fix
