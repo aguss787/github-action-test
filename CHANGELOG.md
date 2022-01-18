@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.1.4 (2022-01-18)
+
+### Fix
+
+- kucing
+
 ## 1.1.3 (2022-01-12)
 
 ### Fix
