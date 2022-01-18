@@ -16,4 +16,5 @@ jobs:
 
       - name: "Run tests"
         run: |
+          sleep 60
           echo "Running unit tests"
