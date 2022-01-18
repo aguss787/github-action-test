@@ -3,13 +3,14 @@ name: Release
 on:
   workflow_dispatch:
   push:
-    branch: main
+    branches:
+      - main
 
 jobs:
   bump_version:
     environment:
       name: local
-    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+    if: "!startsWith(github.event.head_commit.message, 'bump:') && !startsWith(github.event.head_commit.message, 'ci:')"
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
     outputs:
