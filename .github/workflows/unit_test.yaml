@@ -11,10 +11,13 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+
+      - name: "Test"
+        working-directory: tgr-resource-inventory-0.4.2
+        run: |
+          pwd
+          ls
 
       - name: "Run tests"
         run: |
-          sleep 60
           echo "Running unit tests"
