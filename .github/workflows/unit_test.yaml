@@ -21,3 +21,4 @@ jobs:
       - name: "Run tests"
         run: |
           echo "Running unit tests"
+          echo "Why are we running unit tests?"
