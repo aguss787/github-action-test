@@ -19,4 +19,6 @@ jobs:
       - name: Print env
         env:
           NAME: ${{ secrets.ENV_NAME }}
-        run: echo "$NAME"
+        run: |
+          echo "Test env name $NAME"
+          echo "wut ${{ secrets.ENV_NAME }}"
