@@ -7,7 +7,7 @@ on:
     inputs:
       environment:
         description: 'Environment to run'
-        type: environment
+        type: string
         required: true
         default: Dev
 
