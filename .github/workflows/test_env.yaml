@@ -3,20 +3,20 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to run'
-        type: environment
-        required: true
-        default: Dev
+#  workflow_dispatch:
+#    inputs:
+#      environment:
+#        description: 'Environment to run'
+#        type: environment
+#        required: true
+#        default: Dev
 
 jobs:
   run-thingy:
     name: Run Something
     runs-on: ubuntu-latest
     environment:
-      name: ${{ inputs.environment }}
+      name: Dev
     steps:
       - name: Print env
         env:
