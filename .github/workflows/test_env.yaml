@@ -1,0 +1,22 @@
+name: Testing Env Param
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run'
+        type: environment
+        required: true
+        default: Dev
+
+jobs:
+  run-thingy:
+    name: Run Something
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print env
+        env:
+          NAME: ${{ secrets.ENV_NAME }}
+        run: echo "$NAME"
