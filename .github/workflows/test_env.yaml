@@ -7,7 +7,7 @@ on:
     inputs:
       environment:
         description: 'Environment to run'
-        type: string
+        type: environment
         required: true
         default: Dev
 
@@ -16,11 +16,11 @@ jobs:
     name: Run Something
     runs-on: ubuntu-latest
     environment:
-      name: Dev
+      name: ${{ github.event.inputs.environment }}
     steps:
       - name: Print env
         run: |
-          echo "env input: ${{ inputs.environment }}"
+          echo "env input: ${{ github.event.inputs.environment }}"
       - name: Print env var
         env:
           NAME: ${{ secrets.ENV_NAME }}
