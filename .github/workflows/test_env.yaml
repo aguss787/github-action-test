@@ -25,9 +25,14 @@ jobs:
         id: job_context_step
         run: echo '${{ toJSON(job) }}'
         
-      - name: Print env
+      - name: Print env input
         run: |
           echo "env input: ${{ github.event.inputs.environment }}"
+      
+      - name: Print env
+        run: |
+          echo "env input: ${{ github.event.inputs.environment || 'Dev' }}"
+
       - name: Print env var
         env:
           NAME: ${{ secrets.ENV_NAME }}
