@@ -22,7 +22,7 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump Job context
-        id: github_context_step
+        id: job_context_step
         run: echo '${{ toJSON(job) }}'
         
       - name: Print env
