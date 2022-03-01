@@ -16,7 +16,7 @@ jobs:
     name: Run Something
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event.inputs.environment }}
+      name: ${{ github.event.inputs.environment }} || 'Dev'
     steps:
       - name: Print env
         run: |
