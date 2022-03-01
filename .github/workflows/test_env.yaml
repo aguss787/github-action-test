@@ -18,6 +18,13 @@ jobs:
     environment:
       name: ${{ github.event.inputs.environment || 'Dev' }}
     steps:
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump Job context
+        id: github_context_step
+        run: echo '${{ toJSON(job) }}'
+        
       - name: Print env
         run: |
           echo "env input: ${{ github.event.inputs.environment }}"
