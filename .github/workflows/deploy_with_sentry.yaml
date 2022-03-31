@@ -1,7 +1,10 @@
 name: Deploy and send to Sentry
 
 on:
+  workflow_dispatch:
   push:
+    branches:
+      - '*'
     tags:
       - '*'
 
@@ -22,7 +25,10 @@ jobs:
           version: ${{ github.ref }}
 
       - name: Deploying
-        run: echo "Deploying"
+        run: | 
+          echo "Deploying"
+          echo "Sentry release: ${{ ((github.ref_type == 'tag') && 'pake tag') || 'yang lain' }}"
+          
 
       - name: Finalize Sentry release
         uses: getsentry/action-release@v1
