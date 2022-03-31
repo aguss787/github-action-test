@@ -11,6 +11,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
+
+    env:
+      version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -27,7 +31,7 @@ jobs:
       - name: Deploying
         run: | 
           echo "Deploying"
-          echo "Sentry release: ${{ ((github.ref_type == 'tag') && 'pake tag') || 'yang lain' }}"
+          echo "Sentry release: $version"
           
 
       - name: Finalize Sentry release
