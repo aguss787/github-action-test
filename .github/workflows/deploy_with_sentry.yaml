@@ -3,7 +3,6 @@ name: Deploy and send to Sentry
 on:
   push:
     tags:
-      - *
 
 jobs:
   deploy:
