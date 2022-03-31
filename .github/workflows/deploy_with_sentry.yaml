@@ -18,6 +18,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
+          version: ${{ github.ref }}
 
       - name: Deploying
         run: echo "Deploying"
@@ -30,4 +31,5 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
+          version: ${{ github.ref }}
           finalize: true
