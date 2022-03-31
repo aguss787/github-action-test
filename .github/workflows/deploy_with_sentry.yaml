@@ -26,7 +26,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
+          version: $version
 
       - name: Deploying
         run: | 
@@ -42,5 +42,5 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
+          version: $version
           finalize: true
