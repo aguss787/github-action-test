@@ -14,6 +14,7 @@ jobs:
 
     env:
       version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
+      environment: ${{ ((github.ref_type == 'tag') && 'Production') || 'Dev' }}
 
     environment:
       name: ${{ ((github.ref_type == 'tag') && 'Production') || 'Dev' }}
@@ -35,7 +36,7 @@ jobs:
         run: | 
           echo "Deploying"
           echo "Sentry release: $version"
-          echo "env: ${{ jobs.deploy.environment }}"
+          echo "env: ${{ env.environment }}"
           
 
       - name: Finalize Sentry release
