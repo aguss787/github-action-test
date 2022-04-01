@@ -17,7 +17,7 @@ jobs:
       environment: ${{ ((github.ref_type == 'tag') && 'Production') || 'Dev' }}
 
     environment:
-      name: ${{ ((github.ref_type == 'tag') && 'Production') || 'Dev' }}
+      name: ${{ env.environment }}
 
     steps:
       - uses: actions/checkout@v2
