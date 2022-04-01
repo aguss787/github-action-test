@@ -16,7 +16,7 @@ jobs:
       version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
 
     environment:
-      name: ${{ ((github.ref_type == 'tag') && "Production") || "Dev" }}
+      name: ${{ ((github.ref_type == 'tag') && 'Production') || 'Dev' }}
 
     steps:
       - uses: actions/checkout@v2
