@@ -15,6 +15,9 @@ jobs:
     env:
       version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
 
+    environment:
+      name: ${{ ((github.ref_type == 'tag') && "Production") || "Dev" }}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -26,12 +29,13 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          version: $version
+          version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
 
       - name: Deploying
         run: | 
           echo "Deploying"
           echo "Sentry release: $version"
+          echo "env: ${{ github.env }}"
           
 
       - name: Finalize Sentry release
@@ -42,5 +46,5 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          version: $version
+          version: ${{ ((github.ref_type == 'tag') && github.ref) || github.sha }}
           finalize: true
