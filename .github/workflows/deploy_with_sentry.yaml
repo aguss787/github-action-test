@@ -35,7 +35,7 @@ jobs:
         run: | 
           echo "Deploying"
           echo "Sentry release: $version"
-          echo "env: ${{ github.env }}"
+          echo "env: ${{ jobs.deploy.environment }}"
           
 
       - name: Finalize Sentry release
