@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.16.0 (2022-04-25)
+
+### Feat
+
+- jerapah (#18)
+
 ## 1.15.0 (2022-04-25)
 
 ### Feat
