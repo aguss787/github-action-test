@@ -1,4 +1,4 @@
 changelog:
   exclude:
     authors:
-      - github-actions[bot]
+      - github-actions
