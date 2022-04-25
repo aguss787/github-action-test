@@ -1,0 +1,35 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+
+permissions:
+  contents: write
+  pull-requests: write
+
+
+jobs:
+  create_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.event.head_commit.message, 'bump:') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Find Version
+        id: find-version
+        run: |
+          VERSION=$(echo ${{ github.event.head_commit.message }} | sed -E 's/^.+((?:\d+)\.(?:\d+)\.(?:\d+)(?:-([\w-]+(?:\.[\w-]+)*))?(?:\+[\w-]+)?)/$1/')
+          echo "::set-output name=version::$VERSION"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.find-version.outputs.version }}
+          generate_release_notes: true
