@@ -4,6 +4,20 @@
 
 - update readme again
 
+## 1.11.0 (2022-04-25)
+
+### Perf
+
+- jerapah making tinggi lagi
+
+### Fix
+
+- jerapah making tinggi
+
+### Feat
+
+- jerapah
+
 ## 1.10.0 (2022-04-25)
 
 ### Feat
