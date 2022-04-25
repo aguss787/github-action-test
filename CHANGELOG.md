@@ -4,6 +4,82 @@
 
 - update readme again
 
+## 1.2.0 (2022-04-25)
+
+### Feat
+
+- kucing
+- kucing
+- kucing
+- kucing
+- kucing
+- kucing
+- kucing
+- kucing
+
+## s-0.1.0 (2022-03-31)
+
+### Feat
+
+- y
+- x
+
+## s-0.0.7 (2022-03-31)
+
+### Feat
+
+- kucing 2
+- kucing 2
+
+## s-0.0.6 (2022-03-31)
+
+### Feat
+
+- kucing 2
+
+## s-0.0.5 (2022-03-31)
+
+### Feat
+
+- kucing 2
+
+## s-0.0.4 (2022-03-31)
+
+### Feat
+
+- kucing
+- kucing
+
+## s-0.0.3 (2022-03-31)
+
+### Feat
+
+- kucing
+
+## s-0.0.2 (2022-03-31)
+
+### Feat
+
+- kucing
+
+## s-0.0.1 (2022-03-31)
+
+### Feat
+
+- kucing
+- kucing
+- kucing
+- kucing
+- kucing
+- kucing
+- test env
+- test env
+- test env
+- test env
+- test env
+- test env
+- test env
+
 ## 1.1.7 (2022-01-20)
 
 ### Fix
