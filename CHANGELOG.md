@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.17.0 (2022-04-25)
+
+### Feat
+
+- jerapah (#20)
+
 ## 1.16.3 (2022-04-25)
 
 ### Perf
