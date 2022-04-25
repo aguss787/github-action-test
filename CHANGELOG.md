@@ -4,6 +4,13 @@
 
 - update readme again
 
+## 1.10.0 (2022-04-25)
+
+### Feat
+
+- anjing 3
+- anjing 2
+
 ## 1.9.0 (2022-04-25)
 
 ### Feat
