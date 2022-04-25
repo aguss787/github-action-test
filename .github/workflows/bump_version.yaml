@@ -1,104 +1,61 @@
-name: Release
+name: Create Release PR
 
 on:
   workflow_dispatch:
 
+
+permissions:
+  contents: write
+  pull-requests: write
+
+
 jobs:
   bump_version:
-    environment:
-      name: local
-    if: "!startsWith(github.event.head_commit.message, 'bump:') && !startsWith(github.event.head_commit.message, 'ci:')"
-    runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
-    outputs:
-      version: ${{ steps.cz.outputs.version }}
+    runs-on: ubuntu-latest
     steps:
       - name: Check out
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-        
-      - name: test script
-        run: ./test.sh
 
       # Commitizen stuff
-      # Note that we need personal account token of an administrator with `repo` authorization to push directly to main branch
       - id: cz
         name: Create bump and changelog
-        uses: commitizen-tools/commitizen-action@master
+        uses: commitizen-tools/commitizen-action@0.12.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
           changelog_increment_filename: body.md
           push: false
           extra_requirements: typing-extensions
-      - name: Returns repo files ownership to the runner
+
+      - id: czmessage
+        name: Save cz changelog
         run: |
-          sudo chown -R $(whoami) .
-      - name: move tag
+          export BODY=$(cat body.md)
+          BODY="${BODY//'%'/'%25'}"
+          BODY="${BODY//$'\n'/'%0A'}"
+          BODY="${BODY//$'\r'/'%0D'}"
+          echo "::set-output name=body::$BODY"
+          echo "::set-output name=last_commit_message::$(git log -1 --pretty=format:"%s")"
+          rm body.md
+
+      - name: Move tag
         run: |
           git tag -f ${{ steps.cz.outputs.version }} HEAD^1
 
-      - name: Commit setup.py
-        run: |
-          pwd
-          git add setup.py
-          git commit --amend --no-edit
-
-      # Store artifact
-      - name: Create the artifact
-        run: |
-          mkdir dist
-          touch dist/version.txt
-          touch dist/kucing.txt
-          echo ${{ steps.cz.outputs.version }} > dist/version.txt
-          echo kucing > dist/kucing.txt
-
-      - name: Save the artifact
-        uses: actions/upload-artifact@v2
+      # Create PR for the bump
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v4.0.2
         with:
-          name: build-artifact
-          path: dist
+          title: ${{ steps.czmessage.outputs.last_commit_message }}
+          body: ${{ steps.czmessage.outputs.body }}
+          branch: "release/${{ steps.cz.outputs.version }}"
+          draft: false
+          maintainer_can_modify: true
+          delete-branch: true
+          reviewers: |
+            horangi-ir/warden-iam-team
+          team-reviewers: |
+            horangi-ir/warden-iam-team
 
-      # Push commit & tag
-      # Other option is to use https://github.com/ad-m/github-push-action
-      # But we need the atomic operation for pushing the commit and tag
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.REPO_DEPLOY_KEY }} 
-          known_hosts: github.com
-
-      - name: Push changes
-        if: ${{ !env.ACT }} # Don't push on local
-        run: |
-          export remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
-          git push ${remote_repo} --atomic main ${{ steps.cz.outputs.version }}
-        env:
-          SSH_KEY: ${{ secrets.REPO_DEPLOY_KEY }}
-
-      # Release
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: "body.md"
-          tag_name: ${{ steps.cz.outputs.version }}
-
-      - name: Print Changelog
-        run: cat body.md
-      - name: Print Version
-        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
-
-  deploy_to_dev:
-    needs: bump_version
-    uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
-    with:
-      commit_id: ${{ needs.bump_version.outputs.version }}
-      env: dev
-
-  deploy_to_production:
-    needs: deploy_to_dev
-    uses: "aguss787/github-action-test/.github/workflows/deploy_template.yaml@main"
-    with:
-      commit_id: ${{ needs.bump_version.outputs.version }}
-      env: production
+      - name: Push the tag
+        run: git push origin ${{ steps.cz.outputs.version }}
