@@ -4,6 +4,13 @@
 
 - update readme again
 
+## 1.7.0 (2022-04-25)
+
+### Feat
+
+- anjing
+- kucing
+
 ## 1.6.0 (2022-04-25)
 
 ### Feat
