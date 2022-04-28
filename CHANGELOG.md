@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.19.0 (2022-04-28)
+
+### Feat
+
+- more release trigger (#24)
+
 ## 1.18.0 (2022-04-28)
 
 ### Feat
