@@ -8,6 +8,8 @@ on:
   release:
     types:
       - published
+      - released
+      - created
 
 jobs:
   deploy:
