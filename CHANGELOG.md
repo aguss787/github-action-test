@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.18.0 (2022-04-28)
+
+### Feat
+
+- deploy on release (#22)
+
 ## 1.17.1 (2022-04-25)
 
 ### Perf
