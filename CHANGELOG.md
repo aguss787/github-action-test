@@ -4,6 +4,12 @@
 
 - update readme again
 
+## 1.20.0 (2022-04-28)
+
+### Feat
+
+- deploy on tag (#26)
+
 ## 1.19.0 (2022-04-28)
 
 ### Feat
